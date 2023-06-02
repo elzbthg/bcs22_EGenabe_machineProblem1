@@ -6,15 +6,9 @@
 	Start Date: 	June 2, 2023
 	End Date: 		June 2, 2023
 */
-const students = [
-  {
-    name: "Elizabeth Genabe",
-    enablingAssessments: [98, 99, 96, 95, 100],
-    summativeAssessments: [92, 80, 96],
-    finalExamGrade: 82,
-  },
-];
+const readlineSync = require('readline-sync');
 
+// Function to calculate the average of an array of numbers
 function calculateAverage(grades) {
   let sum = 0;
   for (let i = 0; i < grades.length; i++) {
@@ -23,6 +17,7 @@ function calculateAverage(grades) {
   return sum / grades.length;
 }
 
+// Function to determine the letter grade based on the final grade
 function determineLetterGrade(finalGrade) {
   if (finalGrade >= 90 && finalGrade <= 100) {
     return "A";
@@ -37,14 +32,37 @@ function determineLetterGrade(finalGrade) {
   }
 }
 
-console.log("Name\t\tClass Participation\tSummative Grade\tFinal Grade\tLetter Grade");
-console.log("---------------------------------------------------------------------");
-for (let i = 0; i < students.length; i++) {
-  const student = students[i];
-  const classParticipation = calculateAverage(student.enablingAssessments);
-  const summativeAverage = calculateAverage(student.summativeAssessments);
-  const finalGrade = (classParticipation * 0.3) + (summativeAverage * 0.3) + (student.finalExamGrade * 0.4);
+// Prompt the user to enter grades for five students
+for (let i = 1; i <= 5; i++) {
+  console.log(`Student ${i}:`);
+
+  const name = readlineSync.question("Enter the name of the student: ");
+
+  const enablingAssessments = [];
+  for (let j = 1; j <= 5; j++) {
+    const grade = parseFloat(readlineSync.question(`Enter enabling assessment ${j}: `));
+    enablingAssessments.push(grade);
+  }
+
+  const summativeAssessments = [];
+  for (let j = 1; j <= 3; j++) {
+    const grade = parseFloat(readlineSync.question(`Enter summative assessment ${j}: `));
+    summativeAssessments.push(grade);
+  }
+
+  const finalExamGrade = parseFloat(readlineSync.question("Enter major exam grade: "));
+
+  const classParticipation = calculateAverage(enablingAssessments);
+  const summativeGrade = calculateAverage(summativeAssessments);
+  const finalGrade = (classParticipation * 0.3) + (summativeGrade * 0.3) + (finalExamGrade * 0.4);
   const letterGrade = determineLetterGrade(finalGrade);
 
-  console.log(`${student.name}\t${classParticipation.toFixed(2)}\t\t${summativeAverage.toFixed(2)}\t\t${finalGrade.toFixed(2)}\t\t${letterGrade}`);
+  console.log(`Name: ${name}`);
+  console.log(`Class Participation: ${classParticipation.toFixed(2)}`);
+  console.log(`Summative Grade: ${summativeGrade.toFixed(2)}`);
+  console.log(`Final Grade: ${finalGrade.toFixed(2)}`);
+  console.log(`Letter Grade: ${letterGrade}`);
+  console.log("------------------------");
 }
+
+
