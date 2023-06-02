@@ -1,3 +1,11 @@
+// ITCS227 Source Code Template for 2T AY 2022-2023
+/*
+	Program: 		Computation of Grades using Function
+	Programmer: 	Maria Elizabeth D.V. Genabe
+	Section: 		BSCS22
+	Start Date: 	June 2, 2023
+	End Date: 		June 2, 2023
+*/
 const readlineSync = require('readline-sync');
 
 function calculateAverage(grades) {
@@ -65,7 +73,5 @@ for (let i = 0; i < students.length; i++) {
   const student = students[i];
   console.log(`${student.name}\t${student.classParticipation}\t\t${student.summativeGrade}\t\t${student.finalGrade}\t\t${student.letterGrade}`);
 }
-
-
 
 
