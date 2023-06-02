@@ -8,7 +8,6 @@
 */
 const readlineSync = require('readline-sync');
 
-// Function to calculate the average of an array of numbers
 function calculateAverage(grades) {
   let sum = 0;
   for (let i = 0; i < grades.length; i++) {
@@ -17,7 +16,6 @@ function calculateAverage(grades) {
   return sum / grades.length;
 }
 
-// Function to determine the letter grade based on the final grade
 function determineLetterGrade(finalGrade) {
   if (finalGrade >= 90 && finalGrade <= 100) {
     return "A";
@@ -32,7 +30,6 @@ function determineLetterGrade(finalGrade) {
   }
 }
 
-// Prompt the user to enter grades for five students
 for (let i = 1; i <= 5; i++) {
   console.log(`Student ${i}:`);
 
@@ -64,5 +61,4 @@ for (let i = 1; i <= 5; i++) {
   console.log(`Letter Grade: ${letterGrade}`);
   console.log("------------------------");
 }
-
 
