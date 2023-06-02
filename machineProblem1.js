@@ -1,11 +1,3 @@
-// ITCS227 Source Code Template for 2T AY 2022-2023
-/*
-	Program: 		Computation of Grades using Function
-	Programmer: 	Maria Elizabeth D.V. Genabe
-	Section: 		BSCS22
-	Start Date: 	June 2, 2023
-	End Date: 		June 2, 2023
-*/
 const readlineSync = require('readline-sync');
 
 function calculateAverage(grades) {
@@ -29,6 +21,8 @@ function determineLetterGrade(finalGrade) {
     return "F";
   }
 }
+
+const students = [];
 
 for (let i = 1; i <= 5; i++) {
   console.log(`Student ${i}:`);
@@ -54,11 +48,24 @@ for (let i = 1; i <= 5; i++) {
   const finalGrade = (classParticipation * 0.3) + (summativeGrade * 0.3) + (finalExamGrade * 0.4);
   const letterGrade = determineLetterGrade(finalGrade);
 
-  console.log(`Name: ${name}`);
-  console.log(`Class Participation: ${classParticipation.toFixed(2)}`);
-  console.log(`Summative Grade: ${summativeGrade.toFixed(2)}`);
-  console.log(`Final Grade: ${finalGrade.toFixed(2)}`);
-  console.log(`Letter Grade: ${letterGrade}`);
+  students.push({
+    name: name,
+    classParticipation: classParticipation.toFixed(2),
+    summativeGrade: summativeGrade.toFixed(2),
+    finalGrade: finalGrade.toFixed(2),
+    letterGrade: letterGrade
+  });
+
   console.log("------------------------");
 }
+
+console.log("Name\t\tClass Participation\tSummative Grade\tFinal Grade\tLetter Grade");
+console.log("---------------------------------------------------------------------");
+for (let i = 0; i < students.length; i++) {
+  const student = students[i];
+  console.log(`${student.name}\t${student.classParticipation}\t\t${student.summativeGrade}\t\t${student.finalGrade}\t\t${student.letterGrade}`);
+}
+
+
+
 
